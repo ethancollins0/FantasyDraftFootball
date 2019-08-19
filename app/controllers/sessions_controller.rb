@@ -17,4 +17,7 @@ class SessionsController < ApplicationController
         session.delete :name
         redirect_to '/login'
     end
+
+    def signup
+    end
 end
