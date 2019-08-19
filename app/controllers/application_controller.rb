@@ -5,4 +5,6 @@ class ApplicationController < ActionController::Base
             redirect_to '/login'
         end
     end
+    
+    protect_from_forgery with: :exception
 end
