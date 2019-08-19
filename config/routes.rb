@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   get '/', to: 'application#home'
   get '/application/add_player'
+  post '/application/add_player' => 'application#add_to_roster'
   
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

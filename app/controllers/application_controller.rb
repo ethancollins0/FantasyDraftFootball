@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
         isLoggedIn?
     end
 
+    def add_to_roster
+
+    end
+
     private
 
     def isLoggedIn?
