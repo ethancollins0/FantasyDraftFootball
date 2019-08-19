@@ -9,10 +9,11 @@ Player.destroy_all
 User.destroy_all
 Team.destroy_all
 
-broncos = Team.create(name: "broncos")
 bob = User.create(name: 'bob')
 
-Player.create(name: "Playername", user_id: bob.id, team_id: broncos.id)
-Player.create(name: "Playername two", user_id: bob.id, team_id: broncos.id)
+broncos = Team.create(name: "Broncos", user_id: bob.id)
+
+player1 = Player.create(name: "player1", team_id: broncos.id)
+player2 = Player.create(name: "player2", team_id: broncos.id)
 
 byebug
