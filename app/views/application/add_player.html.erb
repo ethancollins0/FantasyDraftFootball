@@ -1,7 +1,7 @@
 <%= 'This is the add page' %>
 
 <% ranked_players = PlayerDatum.order(rank: :asc) %>
-<%byebug%>
+
 <% i = 0 %>
 <%while i < 100%>
     <%= ranked_players[i].name%> <%= ranked_players[i].position %><br>
