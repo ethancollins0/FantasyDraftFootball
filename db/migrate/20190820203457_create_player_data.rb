@@ -11,6 +11,7 @@ class CreatePlayerData < ActiveRecord::Migration[5.2]
       t.integer :intercepts
       t.integer :fg_m
       t.integer :fg_att
+      t.string :a_m
       t.timestamps
     end
   end

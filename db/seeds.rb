@@ -30,15 +30,17 @@ def createPlayer(hash, array)
     array.shift
     array.each do |player_stats|
         
-        attr_array = ['name', 'yards', 'touchdowns', 'rank', 'position', 'comb', 'sacks', 'intercepts', 'fg_m', 'fg_att']
-        statNames = ['Rk', 'Player', 'Pos', 'Yds', 'TD', 'Int', 'Sck', 'Comb', 'FGM', 'FG Att', 'A-M']
+        attr_array = ['name', 'yards', 'touchdowns', 'rank', 'position', 'comb', 'sacks', 'intercepts', 'fg_m', 'fg_att', 'a_m']
+        statNames = ['Player', 'Yds', 'TD', 'Rk', 'Pos', 'Comb', 'Sck', 'Int', 'FGM', 'FG Att', 'A-M']
 
         newPlayer = PlayerDatum.new
-        attr_array.each_with_index do |att, index|
-            att = att.to_sym
-            if hash[statNames[index]]
-                newPlayer[att] = player_stats[index]
-            end
+        attr_array.each_with_index do |att, i|
+            hash.each_pair do |k, v|
+                att = att.to_sym
+                if hash[statNames[i]]
+                    newPlayer[att] = player_stats[hash[statNames[i]]]
+                end
+            end   
         end
         newPlayer.save
     end

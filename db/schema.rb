@@ -23,17 +23,22 @@ ActiveRecord::Schema.define(version: 2019_08_20_203457) do
     t.integer "intercepts"
     t.integer "fg_m"
     t.integer "fg_att"
+    t.string "a_m"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "players", force: :cascade do |t|
     t.string "name"
-    t.string "team_name"
     t.integer "yards"
     t.integer "touchdowns"
-    t.integer "age"
+    t.integer "rank"
     t.string "position"
+    t.integer "comb"
+    t.float "sacks"
+    t.integer "intercepts"
+    t.integer "fg_m"
+    t.integer "fg_att"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "team_id"
