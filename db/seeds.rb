@@ -15,7 +15,7 @@ bill = User.create(name: 'bill')
 broncos = Team.create(name: "Broncos", user_id: bob.id)
 texans = Team.create(name: "Texans", user_id: bill.id)
 
-player1 = Player.create(name: 'Saquon Barkley', position: 'RB' team_id: broncos.id, yards: 1307)
+player1 = Player.create(name: 'Saquon Barkley', position: 'RB', team_id: broncos.id, yards: 1307)
 player2 = Player.create(name: "player2", team_id: broncos.id)
 
 byebug
