@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
     def home
         isLoggedIn?
-        @players = User.where(name: session[:name]).first.players
+        if User.where(name: session[:name]).first
+            @players = User.where(name: session[:name]).first.players
+        else
+            @players = []
+        end
     end
 
     def add_player
@@ -9,7 +13,7 @@ class ApplicationController < ActionController::Base
     end
 
     def add_to_roster
-
+        
     end
 
     private
