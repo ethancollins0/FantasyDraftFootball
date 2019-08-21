@@ -13,7 +13,7 @@ Team.destroy_all
 PlayerDatum.destroy_all
 
 def parseScrape(url, extra=nil)
-    statNames = ['Rk', 'Player', 'Pos', 'Yds', 'TD', 'Int', 'Sck', 'Comb', 'FGM', 'FG Att', 'A-M']
+    statNames = ['Player', 'Yds', 'TD', 'Rk', 'Pos', 'Comb', 'Sck', 'Int', 'FGM', 'FG Att', 'A-M']
     scrapedArray = scrapeUrl(url, extra)
     indexes = []
     stats = {}
@@ -32,16 +32,19 @@ def createPlayer(hash, array)
         
         attr_array = ['name', 'yards', 'touchdowns', 'rank', 'position', 'comb', 'sacks', 'intercepts', 'fg_m', 'fg_att', 'a_m']
         statNames = ['Player', 'Yds', 'TD', 'Rk', 'Pos', 'Comb', 'Sck', 'Int', 'FGM', 'FG Att', 'A-M']
+        intStats = ['yards', 'touchdowns', 'rank', 'comb', 'sacks', 'intercepts', 'fg_m', 'fg_att']
 
         newPlayer = PlayerDatum.new
-        attr_array.each_with_index do |att, i|
-            hash.each_pair do |k, v|
+        attr_array.each_with_index do |att, index|
+            hash.each_pair do |k, val|
                 att = att.to_sym
-                if hash[statNames[i]]
-                    newPlayer[att] = player_stats[hash[statNames[i]]]
+                if hash[statNames[index]]
+                    newPlayer[att] = player_stats[hash[statNames[index]]]
                 end
+                newPlayer[:owned] = false
             end   
         end
+        intStats.map {|stat| newPlayer[stat.to_sym] = 0 if newPlayer[stat.to_sym] == nil}
         newPlayer.save
     end
 end
@@ -77,4 +80,3 @@ while i < 10
     end
     i += 1
 end
-byebug
