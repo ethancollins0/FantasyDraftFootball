@@ -1,9 +1,60 @@
-<%= 'This is the add page' %>
+<h1><%= 'This is the add page' %></h1><br>
 
 <% ranked_players = PlayerDatum.order(rank: :asc) %>
 
+<style>
+
+th {
+    background: #336B87;
+}
+
+tr:nth-child(even) {
+    background: #90AFC5;
+}
+
+tr:nth-child(odd) {
+    background: lightgrey;
+}
+
+th {
+    padding: .5rem;
+}
+
+td {
+    padding: .5rem;
+}
+
+</style>
+
 <% i = 0 %>
-<%while i < 100%>
-    <%= ranked_players[i].name%> <%= ranked_players[i].position %><br>
-    <% i += 1%>
-<%end%>
+    <table style="width:90%; margin-right: auto; margin-left: auto;" class="container">
+        <tr>
+            <th style="text-align: center; vertical-align: middle;">#</th>
+            <th style="text-align: center; vertical-align: middle;">Rank</th>
+            <th style="text-align: center; vertical-align: middle;">Name</th>
+            <th style="text-align: center; vertical-align: middle;">Position</th>
+            <th style="text-align: center; vertical-align: middle;">Yards</th>
+            <th style="text-align: center; vertical-align: middle;">Touchdowns</th>
+            <th style="text-align: center; vertical-align: middle;">Comb</th>
+            <th style="text-align: center; vertical-align: middle;">FGM</th>
+            <th style="text-align: center; vertical-align: middle;">FG Att</th>
+            <th style="text-align: center; vertical-align: middle;">A-M</th>
+            <th style="text-align: center; vertical-align: middle;">Add To Roster</th>
+        </tr>
+        <%while i < 100%>
+            <tr>
+                <td style="text-align: center; vertical-align: middle;"><%=i+1%></td>       
+                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].rank %></td>       
+                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].name %></td>
+                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].position %></td>
+                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].yards %></td>
+                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].touchdowns %></td>           
+                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].comb %></td>
+                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].fg_m %></td>
+                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].fg_att %></td> 
+                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].a_m %></td>
+                <td style="text-align: center; vertical-align: middle;"><button type="button">Add Player</button></td>
+            </tr>
+            <% i += 1%>
+        <%end%>
+    </table>
