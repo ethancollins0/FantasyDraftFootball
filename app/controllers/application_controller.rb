@@ -9,11 +9,13 @@ class ApplicationController < ActionController::Base
     end
 
     def add_player
+        @team = User.where(name: session[:name])
         isLoggedIn?
     end
 
     def add_to_roster
-        
+        Player.create()
+        render :add_player
     end
 
     private
@@ -24,6 +26,4 @@ class ApplicationController < ActionController::Base
             redirect_to '/login'
         end
     end
-
-    protect_from_forgery with: :exception
 end

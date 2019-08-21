@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_203457) do
     t.integer "fg_m"
     t.integer "fg_att"
     t.string "a_m"
+    t.boolean "owned"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

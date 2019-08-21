@@ -86,7 +86,12 @@ tr:nth-child(even) {
                 <td><%= ranked_players[i].fg_m %></td>
                 <td><%= ranked_players[i].fg_att %></td> 
                 <td><%= ranked_players[i].a_m %></td>
-                <td><button type="button" class="add_submit" style="align: center">Add Player</button></td>
+                <td>
+                    <%=form_for :player do |f|%>
+                        <input type="hidden" name= "id" value=<%=ranked_players[i].id%>>
+                        <%=f.submit%>
+                    <%end%>
+                </td>
             </tr>
             <% i += 1%>
         <%end%>
