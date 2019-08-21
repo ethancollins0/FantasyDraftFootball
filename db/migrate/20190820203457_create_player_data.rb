@@ -12,6 +12,7 @@ class CreatePlayerData < ActiveRecord::Migration[5.2]
       t.integer :fg_m
       t.integer :fg_att
       t.string :a_m
+      t.boolean :owned
       t.timestamps
     end
   end

@@ -8,53 +8,87 @@ th {
     background: #336B87;
 }
 
+tr {
+    background: #f3f3f3;
+}
+
 tr:nth-child(even) {
-    background: #90AFC5;
+    background: #E6F5FF;
 }
 
-tr:nth-child(odd) {
-    background: lightgrey;
+.container {
+    min-width: 400px;
+    border-collapse: collapse;
+    font-size: 1.3em;
+    text-align: left;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
 }
 
-th {
-    padding: .5rem;
+.container thead tr{
+    background-color: lightblue;
+     color: white;
+    font-weight: bold;
+    text-align: left;
 }
 
-td {
-    padding: .5rem;
+.container th, .container td {
+    padding: 12px 15px;
 }
+
+.container tbody tr {
+    border-bottom: 1px solid lightgrey;
+}
+
+.container tbody tr:last-of-type {
+    border-bottom: 2px solid lightgrey;
+}
+
+.add_submit {
+    height: 50px;
+    border: 1px solid #f3f3f3;
+    background-color: #ffffff;
+    border-radius: 5px 5px 5px 5px;
+    position: relative;
+}
+ 
+
 
 </style>
 
 <% i = 0 %>
     <table style="width:90%; margin-right: auto; margin-left: auto;" class="container">
-        <tr>
-            <th style="text-align: center; vertical-align: middle;">#</th>
-            <th style="text-align: center; vertical-align: middle;">Rank</th>
-            <th style="text-align: center; vertical-align: middle;">Name</th>
-            <th style="text-align: center; vertical-align: middle;">Position</th>
-            <th style="text-align: center; vertical-align: middle;">Yards</th>
-            <th style="text-align: center; vertical-align: middle;">Touchdowns</th>
-            <th style="text-align: center; vertical-align: middle;">Comb</th>
-            <th style="text-align: center; vertical-align: middle;">FGM</th>
-            <th style="text-align: center; vertical-align: middle;">FG Att</th>
-            <th style="text-align: center; vertical-align: middle;">A-M</th>
-            <th style="text-align: center; vertical-align: middle;">Add To Roster</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Yards</th>
+                <th>Touchdowns</th>
+                <th>Comb</th>
+                <th>FGM</th>
+                <th>FG Att</th>
+                <th>A-M</th>
+                <th>Add To Roster</th>
+            </tr>
+        </thead>
+        <tbody>
         <%while i < 100%>
             <tr>
-                <td style="text-align: center; vertical-align: middle;"><%=i+1%></td>       
-                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].rank %></td>       
-                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].name %></td>
-                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].position %></td>
-                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].yards %></td>
-                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].touchdowns %></td>           
-                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].comb %></td>
-                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].fg_m %></td>
-                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].fg_att %></td> 
-                <td style="text-align: center; vertical-align: middle;"><%= ranked_players[i].a_m %></td>
-                <td style="text-align: center; vertical-align: middle;"><button type="button">Add Player</button></td>
+                <td><%= i+1 %></td>       
+                <td class="sever"><%= ranked_players[i].rank %></td>       
+                <td><%= ranked_players[i].name %></td>
+                <td><%= ranked_players[i].position %></td>
+                <td><%= ranked_players[i].yards %></td>
+                <td><%= ranked_players[i].touchdowns %></td>           
+                <td><%= ranked_players[i].comb %></td>
+                <td><%= ranked_players[i].fg_m %></td>
+                <td><%= ranked_players[i].fg_att %></td> 
+                <td><%= ranked_players[i].a_m %></td>
+                <td><button type="button" class="add_submit" style="align: center">Add Player</button></td>
             </tr>
             <% i += 1%>
         <%end%>
+        </tbody>
     </table>
